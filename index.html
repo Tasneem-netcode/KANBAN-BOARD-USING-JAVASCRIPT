@@ -10,22 +10,27 @@
     <main>
         <nav>
             <div class="left">Kanban</div>
-            <div class="right"><button>Add new task</button></div>
+            <div class="right"><button id="toggle-modal">Add new task</button></div>
         </nav>
         <section class="board">
-            <div class="task-column">
+            <div id="todo" class="task-column">
                 <div class="heading">
                     <div class="left">TO DO</div>
                     <div class="right">Count</div>
                 </div>
+                <!-- <div draggable="true" class="task">
+                    <h2>Task 1</h2>
+                    <p>Description for Task 1</p>
+                    <button>Delete</button>
+                </div> -->
             </div>
-            <div class="task-column">
+            <div id="in-progress" class="task-column">
                 <div class="heading">
                     <div class="left">IN PROGRESS</div>
                     <div class="right">Count</div>
                 </div>
             </div>
-            <div class="task-column">
+            <div id="done" class="task-column">
                 <div class="heading">
                     <div class="left">DONE</div>
                     <div class="right">Count</div>
@@ -33,6 +38,16 @@
             </div>
         </section>
     </main>
-    
+
+    <div class="modal add-new-task">
+        <div class="bg"></div>
+        <div class="center">
+            <input type="text" id="task-title-input" placeholder="Task Title"/>
+            <textarea id="task-description-input" placeholder="Task Description"></textarea>
+            <button id="add-new-task" class="add-task-btn">Add Task</button>
+
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

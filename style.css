@@ -13,9 +13,10 @@ html{
 }
 :root{
     --background-color:#1f1d1d;
-    --bg-button-color: #313445;
+    --bg-button-color: #c0c5e07b;
+    --bg-task-color: #2a2a2a;
     --text-color:#e2dbdb;
-    --primary-color:#43423a;
+    --primary-color:#08030357;
     --secondary-color:#3498db;
     --tertiary-color:#e74c3c;
     --quaternary-color:#91ecb7;
@@ -46,7 +47,8 @@ main{
    height:100%;
    display: flex;
    flex-direction: column;
-   justify-content: space-between
+   justify-content: space-between;
+   color: var(--text-color);
 }
 
 nav{
@@ -54,6 +56,10 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--primary-color);
 }
 
 nav button{
@@ -73,6 +79,7 @@ section{
     display: flex;
     justify-content: space-between;
     gap: var(--padding-xxl);
+    color: var(--text-color);
 }
 
 section .task-column{
@@ -84,6 +91,16 @@ section .task-column{
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--border-radius-l);
     transition: transform 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-m); 
+    padding: var(--padding-m);
+    transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+section .task-column.hover-over{
+    border: 2px dashed var(--secondary-color);
+    scale: 1.02;
 }
 
 section .task-column:hover {
@@ -92,7 +109,7 @@ section .task-column:hover {
 }
 
 body {
-    background: linear-gradient(135deg, #d79ecc 0%, #b9c9e9 100%);
+    background: linear-gradient(135deg, #393539 0%, #3f434a 100%);
     background-attachment: fixed;
     color: #2d3436;
 }
@@ -103,3 +120,90 @@ section .task-column .heading{
     justify-content: space-between;
     align-items: center;
 }
+
+section .task-column .task{
+    background-color: var(--bg-task-color);
+    padding: var(--padding-m);
+    border-radius: var(--border-radius-m);
+    margin-top: var(--padding-s);
+    cursor: grab;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-s);
+}
+
+section .task-column .task button{
+    align-self: flex-end;
+    background-color: var(--bg-button-color);
+    color: var(--text-color);
+    border: none;
+    padding: var(--padding-s) var(--padding-m);
+    cursor: pointer;
+    outline: none;
+    border-radius: var(--border-radius-m);
+}
+
+/* modal style  */
+.modal{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    /* z-index: 1000; */
+}
+
+.modal.active{
+    display: flex;
+}
+
+.modal .bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(10px);
+    
+}
+
+
+.modal .center{
+    background-color: var(--primary-color);
+    padding: var(--padding-xxl);
+    border-radius: var(--border-radius-m);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-m);
+    z-index: 10;
+}
+
+.modal .center input,
+.modal .center textarea,
+.modal .center select{
+    background-color: var(--bg-task-color);
+    padding: var(--padding-s);
+    border-radius: var(--border-radius-m);
+    border: none;
+    outline: none;
+    color: var(--text-color);
+    font-size: var(--font-size-m);
+}
+
+.modal .center button{
+    background-color: var(--bg-button-color);
+    color: var(--text-color);
+    border: none;
+    padding: var(--padding-s) var(--padding-m);
+    cursor: pointer;
+    outline: none;
+    border-radius: var(--border-radius-m);
+    width: fit-content;
+    align-self: center;
+}
+
